@@ -15,7 +15,7 @@ export const ProductScreen = () => {
         <Col md={3}>
             <ListGroup variant='flush'>
                 <ListGroup.Item>
-                    <h3>{product.name}</h3>
+                    <h3>{product.brand + ' ' + product.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
                     Price: ${product.price}
@@ -25,6 +25,37 @@ export const ProductScreen = () => {
                 </ListGroup.Item>
             </ListGroup>
         </Col>  
+        <Col md={3}>
+        <Card>
+            <ListGroup variant='flush'>
+                <ListGroup.Item>
+                    <Row>
+                        <Col>
+                            Price:
+                        </Col>
+                        <Col>
+                            <strong>${product.price}</strong>
+                        </Col>
+                    </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                    <Row>
+                        <Col>
+                            Status:
+                        </Col>
+                        <Col>
+                            {product.countInStock > 0 ? `${product.countInStock} In Stock` : 'Out of Stock'}
+                        </Col>
+                    </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                    <Button className='btn-block' type='button' disabled={product.countInStock === 0}>
+                        Add to Cart
+                    </Button>
+                </ListGroup.Item>
+            </ListGroup>
+        </Card>
+        </Col>
     </Row>
     </>
   )
